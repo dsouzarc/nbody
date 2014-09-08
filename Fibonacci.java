@@ -10,10 +10,7 @@ public class Fibonacci {
   private static final int FIB_NUM = 30;
   
   //To hold previous values
-  private static final int[] previousValues = new int[FIB_NUM];
-  
-  //Represents a number whose Fibonacci sequence we have not calculated
-  private static final int NOT_CALCULATED = -19;
+  private static final long[] previousValues = new long[FIB_NUM];
   
   /** Method on website */
   public static long Fib(long num) {
@@ -28,22 +25,19 @@ public class Fibonacci {
     * @param fibonacci sequence number to find
     * @return number at the element of fibonacci sequence */
   public static long My_Fib(final int num) { 
-    for(int i = 0; i < previousValues.length; i++) { 
-      previousValues[i] = NOT_CALCULATED;
-    }
-    
-    return calculateFib(num);
-  }
-  
-  /** @return fibonacci number to calculate */
-  private static int calculateFib(final int num) {
-    if(num == 0 || num == 1) { 
+    if(num < 2) { 
       return num;
     }
-    if(previousValues[num] == NOT_CALCULATED) { 
+    
+    //Check to see if its calculated
+    if(previousValues[num] != 0) { 
       return previousValues[num];
     }
-    return calculateFib(num - 1) + calculateFib(num - 2);
+    
+    else { 
+      previousValues[num] = My_Fib(num - 1) + My_Fib(num-2);
+    }
+    return previousValues[num];
   }
   
   public static void main(String[] ryan) { 
