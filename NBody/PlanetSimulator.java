@@ -7,7 +7,7 @@ public class PlanetSimulator {
   private final Planet[] planets;
   
   public PlanetSimulator() { 
-    In fileIn = new In(new File("planets.txt"));
+    final In fileIn = new In(new File("planets.txt"));
     
     this.numPlanets = fileIn.readInt();
     this.universeRadius = fileIn.readDouble();
@@ -23,6 +23,8 @@ public class PlanetSimulator {
       final String planetName = fileIn.readString();
       this.planets[i] = new Planet(initialX, initialY, initialXVel, initialYVel, mass, planetName);
     }
+    
+    fileIn.close();
     
     drawPlanets();
   }
