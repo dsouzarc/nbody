@@ -24,6 +24,13 @@ public class PlanetSimulator {
       this.planets[i] = new Planet(initialX, initialY, initialXVel, initialYVel, mass, planetName);
     }
     
+    double sunMass;
+    for(Planet planet : planets) { 
+      if(planet.getName().contains("sun")) { 
+        sunMass = planet.getMass();
+      }
+    }
+    
     fileIn.close();
     
     drawPlanets();

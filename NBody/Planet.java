@@ -10,6 +10,8 @@ public class Planet {
   private double currentX, currentY;
   private double velocityX, velocityY;
   
+  private double sunMass;
+  
   public Planet(final double initialX, final double initialY, final double initialXVelocity, 
                 final double initialYVelocity, final double mass, final String planetName) { 
     this.planetName = planetName;
@@ -23,6 +25,10 @@ public class Planet {
     this.currentY = initialY;
     this.velocityX = initialXVelocity;
     this.velocityY = initialYVelocity;
+  }
+  
+  public void setSunMass(double sunMass) { 
+    this.sunMass = sunMass;
   }
   
   public String getName() { 
