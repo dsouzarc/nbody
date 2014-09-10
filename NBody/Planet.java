@@ -34,7 +34,7 @@ public class Planet {
   
   public void setF(double sunX, double sunY) { 
     final double r = Math.sqrt( Math.pow((sunX - initialX), 2) + Math.pow((sunY - initialY), 2));
-    F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
+    this.F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
   }
   
   

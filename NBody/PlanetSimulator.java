@@ -23,9 +23,10 @@ public class PlanetSimulator {
       final String planetName = fileIn.readString();
       this.planets[i] = new Planet(initialX, initialY, initialXVel, initialYVel, mass, planetName);
     }
+    fileIn.close();
     
     double sunMass = 0;
-    double sunX, sunY;
+    double sunX = 0, sunY = 0;
     for(Planet planet : planets) { 
       if(planet.getName().contains("sun")) { 
         sunMass = planet.getMass();
@@ -36,9 +37,8 @@ public class PlanetSimulator {
     
     for(Planet planet : planets) { 
       planet.setSunMass(sunMass);
+      planet.setF(sunX, sunY);
     }
-    
-    fileIn.close();
     
     drawPlanets();
   }
