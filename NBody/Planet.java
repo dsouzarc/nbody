@@ -10,6 +10,7 @@ public class Planet {
   private double currentX, currentY;
   private double velocityX, velocityY;
   
+  private double F;
   private double sunMass;
   
   public Planet(final double initialX, final double initialY, final double initialXVelocity, 
@@ -30,6 +31,12 @@ public class Planet {
   public void setSunMass(double sunMass) { 
     this.sunMass = sunMass;
   }
+  
+  public void setF(double sunX, double sunY) { 
+    final double r = Math.sqrt( Math.pow((sunX - initialX), 2) + Math.pow((sunY - initialY), 2));
+    F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
+  }
+  
   
   public String getName() { 
     return this.planetName;

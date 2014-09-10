@@ -24,11 +24,18 @@ public class PlanetSimulator {
       this.planets[i] = new Planet(initialX, initialY, initialXVel, initialYVel, mass, planetName);
     }
     
-    double sunMass;
+    double sunMass = 0;
+    double sunX, sunY;
     for(Planet planet : planets) { 
       if(planet.getName().contains("sun")) { 
         sunMass = planet.getMass();
+        sunX = planet.getInitialX();
+        sunY = planet.getInitialY();
       }
+    }
+    
+    for(Planet planet : planets) { 
+      planet.setSunMass(sunMass);
     }
     
     fileIn.close();
