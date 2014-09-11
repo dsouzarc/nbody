@@ -1,6 +1,7 @@
 public class Planet { 
   
   public static final double G = 6.67 * Math.pow(10, -11);
+  public static final double changeT = 25000.0;
   
   private final String planetName;
   private final double initialXVelocity, initialYVelocity;
@@ -53,6 +54,13 @@ public class Planet {
   public double getAy(final double fY) { 
     return fY / mass;
   }
+  
+  public void calculateNewVelocity(final double vX, final double aX, final double vY, final double aY) { 
+    this.velocityX = vX + changeT * aX;
+    this.velocityY = vY * changeT * aY;
+  }
+  
+  
   
   
   public String getName() { 
