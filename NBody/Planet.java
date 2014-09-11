@@ -11,6 +11,7 @@ public class Planet {
   private double velocityX, velocityY;
   
   private double F;
+  private double r;
   private double sunMass;
   
   public Planet(final double initialX, final double initialY, final double initialXVelocity, 
@@ -33,12 +34,12 @@ public class Planet {
   }
   
   public void setF(double sunX, double sunY) { 
-    final double r = Math.sqrt( Math.pow((sunX - initialX), 2) + Math.pow((sunY - initialY), 2));
+    this.r = Math.sqrt( Math.pow((sunX - initialX), 2) + Math.pow((sunY - initialY), 2)); //Distance formula from sun center to planet center
     this.F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
   }
   
   public double getFx(final double changeX) { 
-    return 0;
+    return F * (changeX / r);
   }
   
   
