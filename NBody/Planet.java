@@ -60,8 +60,10 @@ public class Planet {
     this.velocityY = vY * changeT * aY;
   }
   
-  
-  
+  public void calculateNewPoint() { 
+    this.currentX = this.currentX + changeT * this.velocityX;
+    this.currentY = this.currentY + changeT * this.velocityY;
+  }
   
   public String getName() { 
     return this.planetName;
