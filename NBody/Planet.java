@@ -42,6 +42,14 @@ public class Planet {
     return F * (changeX / r);
   }
   
+  public double getFy(final double changeY) { 
+    return F * (changeY / r);
+  }
+  
+  public double getAx(final double fX) { 
+    return fX / mass;
+  }
+  
   
   public String getName() { 
     return this.planetName;
