@@ -55,14 +55,23 @@ public class Planet {
     return fY / mass;
   }
   
-  public void calculateNewVelocity(final double vX, final double aX, final double vY, final double aY) { 
-    this.velocityX = vX + changeT * aX;
-    this.velocityY = vY * changeT * aY;
+  public void calculateNewVelocity(final double aX, final double aY) { 
+    this.velocityX = this.velocityX + changeT * aX;
+    this.velocityY = this.velocityY * changeT * aY;
   }
   
   public void calculateNewPoint() { 
     this.currentX = this.currentX + changeT * this.velocityX;
     this.currentY = this.currentY + changeT * this.velocityY;
+  }
+  
+  public void calculateNewPoint(final double changeX, final double changeY) { 
+    final double Fx = getFx(changeX);
+    final double Fy = getFy(changeY);
+    final double Ax = getAx(Fx);
+    final double Ay = getAy(Fy);
+    calculateNewVelocity(Ax, Ay);
+    calculateNewPoint();
   }
   
   public String getName() { 

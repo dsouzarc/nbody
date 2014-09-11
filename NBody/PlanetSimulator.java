@@ -41,9 +41,17 @@ public class PlanetSimulator {
     }
     
     drawPlanets();
+    
+    for(Planet planet : planets) { 
+      if(!planet.getName().contains("sun")) { 
+        planet.calculateNewPoint((Math.abs(sunX - planet.getX())), (Math.abs(sunY - planet.getY())));
+      }
+    }
+    drawPlanets();
   }
   
   private void drawPlanets() { 
+    StdDraw.clear();
     StdDraw.setScale(-1 * universeRadius, universeRadius);
     StdDraw.picture(0, 0, "starfield.jpg");
     for(Planet planet : planets) { 
