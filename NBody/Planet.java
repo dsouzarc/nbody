@@ -37,6 +37,10 @@ public class Planet {
     this.F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
   }
   
+  public double getFx(final double changeX) { 
+    return 0;
+  }
+  
   
   public String getName() { 
     return this.planetName;
