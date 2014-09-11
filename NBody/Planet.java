@@ -50,6 +50,10 @@ public class Planet {
     return fX / mass;
   }
   
+  public double getAy(final double fY) { 
+    return fY / mass;
+  }
+  
   
   public String getName() { 
     return this.planetName;
