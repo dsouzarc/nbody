@@ -46,8 +46,14 @@ public class Planet {
     return new Point(xAccel, yAccel);
   }
   
+  private void calculateVelocity() { 
+    final Point acceleration = getAcceleration();
+    this.currentVelocity.setX(this.currentVelocity.getX() + changeT * acceleration.getX());
+    this.currentVelocity.setY(this.currentVelocity.getY() + changeT * acceleration.getY());
+  }
   
   public void planetMove() { 
+    
     
   }
   
