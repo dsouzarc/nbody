@@ -24,6 +24,15 @@ public class Point {
   }
   
   @Override
+  public boolean equals(final Object other) { 
+    if(!(other instanceof Point)) { 
+      return false;
+    }
+    final Point otherPoint = (Point) other;
+    return otherPoint.getX() == this.getX() && otherPoint.getY() == this.yVal;
+  }
+  
+  @Override
   public String toString() { 
     return "X: " + this.xVal + "\tY: " + this.yVal;
   }
