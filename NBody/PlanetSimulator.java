@@ -35,27 +35,37 @@ public class PlanetSimulator {
       }
     }
     
-    for(Planet planet : planets) { 
-      planet.setSunMass(sunMass);
-      planet.setF(sunX, sunY);
-    }
-    
-    drawPlanets();
-    
-    for(Planet planet : planets) { 
+    for(Planet planet : planets) {
       if(!planet.getName().contains("sun")) { 
-        planet.calculateNewPoint((Math.abs(sunX - planet.getX())), (Math.abs(sunY - planet.getY())));
+        planet.setSunMass(sunMass);
+        planet.setF(sunX, sunY);
       }
     }
+    
+    for(Planet planet : planets) { 
+      System.out.println(planet.getF());
+    }
+    
     drawPlanets();
+    
+    for(int i = 0; i < 100; i++) {
+      for(Planet planet : planets) { 
+        if(!planet.getName().contains("sun")) { 
+          planet.calculateNewPoint((Math.abs(sunX - planet.getX())) + 1000000000, (Math.abs(sunY - planet.getY())) + 1000000000);
+        }
+      }
+      drawPlanets();
+    }
+    
   }
   
   private void drawPlanets() { 
-    StdDraw.clear();
+    //StdDraw.clear();
     StdDraw.setScale(-1 * universeRadius, universeRadius);
     StdDraw.picture(0, 0, "starfield.jpg");
     for(Planet planet : planets) { 
       drawPlanet(planet);
+      System.out.println(planet.getName() + "\tX: " + planet.getX() + "\tY: " + planet.getY());
     }
   }
   

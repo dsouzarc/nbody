@@ -2,6 +2,7 @@ public class Planet {
   
   public static final double G = 6.67 * Math.pow(10, -11);
   public static final double changeT = 25000.0;
+  public static final double T = 157788000.0;
   
   private final String planetName;
   private final double initialXVelocity, initialYVelocity;
@@ -39,6 +40,9 @@ public class Planet {
     this.F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
   }
   
+  public double getF() { 
+    return this.F;
+  }
   public double getFx(final double changeX) { 
     return F * (changeX / r);
   }
