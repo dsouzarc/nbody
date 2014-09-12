@@ -51,23 +51,19 @@ public class PlanetSimulator {
     for(int i = 0; i < 100; i++) {
       for(Planet planet : planets) { 
         if(!planet.getName().contains("sun")) { 
-          //planet.calculateNewPoint((Math.abs(sunX - planet.getX())) + 1000000000, (Math.abs(sunY - planet.getY())) + 1000000000);
+          planet.move();
         }
       }
       drawPlanets();
     }
-    
   }
   
   private void drawPlanets() { 
+    StdDraw.show(40);
     StdDraw.picture(0, 0, "starfield.jpg");
     for(Planet planet : planets) { 
-      drawPlanet(planet);
+      StdDraw.picture(planet.getPoint().getX(), planet.getPoint().getY(), planet.getName());
     }
-  }
-  
-  private void drawPlanet(final Planet thePlanet) { 
-    StdDraw.picture(thePlanet.getPoint().getX(), thePlanet.getPoint().getY(), thePlanet.getName());
   }
   
   public static void main(String[] ryan) { 

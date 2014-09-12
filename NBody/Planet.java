@@ -33,11 +33,11 @@ public class Planet {
   }
   
   private double getFx() { 
-    return (F * (Math.abs(this.currentPoint.getX() - sunPoint.getX()))) / Point.getDistance(currentPoint, sunPoint);
+    return (F * (sunPoint.getX() - this.currentPoint.getX())) / Point.getDistance(currentPoint, sunPoint);
   }
   
   private double getFy() { 
-    return (F * (Math.abs(this.currentPoint.getY() - sunPoint.getY()))) / Point.getDistance(currentPoint, sunPoint);
+    return (F * (sunPoint.getY() - this.currentPoint.getY())) / Point.getDistance(currentPoint, sunPoint);
   }
   
   private Point getAcceleration() { 
@@ -56,6 +56,10 @@ public class Planet {
     calculateVelocity();
     this.currentPoint.setX(this.currentPoint.getX() + changeT * this.currentVelocity.getX());
     this.currentPoint.setY(this.currentPoint.getY() + changeT * this.currentVelocity.getY());
+  }
+  
+  public void move() { 
+    calculatePoint();
   }
   
   public void setSunMass(double sunMass) { 
