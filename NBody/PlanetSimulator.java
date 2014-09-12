@@ -37,6 +37,7 @@ public class PlanetSimulator {
     for(Planet planet : planets) {
       if(!planet.getName().contains("sun")) { 
         planet.setSunMass(sunMass);
+        planet.setSunPoint(sunPoint);
         planet.setF(sunPoint);
       }
     }

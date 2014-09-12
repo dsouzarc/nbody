@@ -33,7 +33,11 @@ public class Planet {
   }
   
   private double getFx() { 
-    return (F * (Math.abs(this.currentPoint.getX() - sunPoint.getX()))) / (this.currentPoint().getDistance(sunPoint));
+    return (F * (Math.abs(this.currentPoint.getX() - sunPoint.getX()))) / Point.getDistance(currentPoint, sunPoint);
+  }
+  
+  private double getFy() { 
+    return (F * (Math.abs(this.currentPoint.getY() - sunPoint.getY()))) / Point.getDistance(currentPoint, sunPoint);
   }
   
   public void planetMove() { 
