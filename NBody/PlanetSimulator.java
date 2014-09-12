@@ -15,30 +15,27 @@ public class PlanetSimulator {
     this.planets = new Planet[numPlanets];
     
     for(int i = 0; i < this.numPlanets; i++) { 
-      final double initialX = fileIn.readDouble();
-      final double initialY = fileIn.readDouble();
-      final double initialXVel = fileIn.readDouble();
-      final double initialYVel = fileIn.readDouble();
+      final Point initialPoint = new Point(fileIn.readDouble(), fileIn.readDouble());
+      final Point initialVelocity = new Point(fileIn.readDouble(), fileIn.readDouble());
       final double mass = fileIn.readDouble();
       final String planetName = fileIn.readString();
-      this.planets[i] = new Planet(initialX, initialY, initialXVel, initialYVel, mass, planetName);
+      this.planets[i] = new Planet(initialPoint, initialVelocity, mass, planetName);
     }
     fileIn.close();
     
     double sunMass = 0;
-    double sunX = 0, sunY = 0;
+    Point sunPoint = null;
     for(Planet planet : planets) { 
       if(planet.getName().contains("sun")) { 
         sunMass = planet.getMass();
-        sunX = planet.getInitialX();
-        sunY = planet.getInitialY();
+        sunPoint = planet.getPoint();
       }
     }
     
     for(Planet planet : planets) {
       if(!planet.getName().contains("sun")) { 
         planet.setSunMass(sunMass);
-        planet.setF(sunX, sunY);
+        planet.setF(sunPoint);
       }
     }
     
@@ -51,7 +48,7 @@ public class PlanetSimulator {
     for(int i = 0; i < 100; i++) {
       for(Planet planet : planets) { 
         if(!planet.getName().contains("sun")) { 
-          planet.calculateNewPoint((Math.abs(sunX - planet.getX())) + 1000000000, (Math.abs(sunY - planet.getY())) + 1000000000);
+          //planet.calculateNewPoint((Math.abs(sunX - planet.getX())) + 1000000000, (Math.abs(sunY - planet.getY())) + 1000000000);
         }
       }
       drawPlanets();
@@ -65,12 +62,12 @@ public class PlanetSimulator {
     StdDraw.picture(0, 0, "starfield.jpg");
     for(Planet planet : planets) { 
       drawPlanet(planet);
-      System.out.println(planet.getName() + "\tX: " + planet.getX() + "\tY: " + planet.getY());
+      System.out.println(planet.getName() + planet.getPoint().toString());
     }
   }
   
   private void drawPlanet(final Planet thePlanet) { 
-    StdDraw.picture(thePlanet.getX(), thePlanet.getY(), thePlanet.getName());
+    //StdDraw.picture(thePlanet.getX(), thePlanet.getY(), thePlanet.getName());
   }
   
   public static void main(String[] ryan) { 

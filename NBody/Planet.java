@@ -9,14 +9,14 @@ public class Planet {
   private final Point initialPoint;
   private final double mass;
   
-  private double currentPoint;
-  private double currentVelocity;
+  private Point currentPoint;
+  private Point currentVelocity;
   
   private double F;
   private double r;
   private double sunMass;
   
-  public Planet(final Point initialPoint, final initialVelocity, final double mass, final String planetName) {
+  public Planet(final Point initialPoint, final Point initialVelocity, final double mass, final String planetName) {
     this.initialVelocity = initialVelocity;
     this.initialPoint = initialPoint;
     this.mass = mass;
