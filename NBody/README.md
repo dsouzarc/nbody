@@ -11,3 +11,10 @@ RUN INSTRUCTIONS:
 2. Compile all files (javac *.java)
 3. Run main method of PlanetSimulation.java (java PlanetSimulation)
 
+Screenshots: 
+![ScreenShot](https://{https://github.com/dsouzarc/algorithmsdata/blob/master/NBody/Screenshot_1.png})
+![ScreenShot](https://{https://github.com/dsouzarc/algorithmsdata/blob/master/NBody/Screenshot2.png})
+
+Please email me if you have any questions
+dsouzarc@gmail.com
+
