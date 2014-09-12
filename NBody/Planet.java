@@ -52,9 +52,10 @@ public class Planet {
     this.currentVelocity.setY(this.currentVelocity.getY() + changeT * acceleration.getY());
   }
   
-  public void planetMove() { 
-    
-    
+  private void calculatePoint() { 
+    calculateVelocity();
+    this.currentPoint.setX(this.currentPoint.getX() + changeT * this.currentVelocity.getX());
+    this.currentPoint.setY(this.currentPoint.getY() + changeT * this.currentVelocity.getY());
   }
   
   public void setSunMass(double sunMass) { 
