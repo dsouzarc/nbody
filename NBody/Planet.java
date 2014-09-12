@@ -44,6 +44,22 @@ public class Planet {
     return this.planetName;
   }
   
+  public Point getPoint() { 
+    return this.currentPoint;
+  }
+  
+  public Point getInitialPoint() { 
+    return this.initialPoint;
+  }
+  
+  public Point getVelocity() { 
+    return this.currentVelocity;
+  }
+  
+  public Point getInitialVelocity() { 
+    return this.initialVelocity;
+  }
+  
   public double getMass() { 
     return this.mass;
   }
