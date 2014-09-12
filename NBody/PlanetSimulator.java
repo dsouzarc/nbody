@@ -1,6 +1,17 @@
 import java.io.File;
 
 public class PlanetSimulator { 
+  
+  /** Written by Ryan D'souza
+    * Algorithms and Data Structures N-body assignment
+    * http://www.cs.princeton.edu/courses/archive/spring14/cos126/assignments/nbody.html
+    * Simulates our solar system
+    * Run Instructions: 
+    *   1. Compile all files (javac *.java)
+    *   2. Run PlanetSimulator (java PlanetSimulator)
+    */
+  
+  //Time variables
   public static final double changeT = 25000.0;
   public static final double T = 157788000.0;
   
@@ -8,7 +19,10 @@ public class PlanetSimulator {
   private final double universeRadius;
   private final Planet[] planets;
   
+  /** Constructor */
   public PlanetSimulator() { 
+    
+    //Reads info from file
     final In fileIn = new In(new File("planets.txt"));
     
     this.numPlanets = fileIn.readInt();
@@ -27,6 +41,7 @@ public class PlanetSimulator {
     
     StdDraw.setScale(-1 * universeRadius, universeRadius);
     
+    //Gets the mass and location of the Sun which is one of the planets
     double sunMass = 0;
     Point sunPoint = null;
     for(Planet planet : planets) { 
@@ -36,21 +51,21 @@ public class PlanetSimulator {
       }
     }
     
+    //Goes through all of the planets and sets their sunMass and sunPoint 
+    //Values in order to calculate F, the effect of the sun's gravity on the planet's orbit
     for(Planet planet : planets) {
       if(!planet.getName().contains("sun")) { 
         planet.setSunMass(sunMass);
         planet.setSunPoint(sunPoint);
-        planet.setF(sunPoint);
+        planet.calculateF();
       }
     }
     
-    for(Planet planet : planets) { 
-      System.out.println(planet.getF());
-    }
-    
+    //Draw the planets the first time
     drawPlanets();
     
-    for(double time = changeT; changeT <= T; time += changeT) {
+    //Start at t = 0, increase by changeT until we've reached max time (T)
+    for(double time = 0; changeT <= T; time += changeT) {
       for(Planet planet : planets) { 
         if(!planet.getName().contains("sun")) { 
           planet.move();
@@ -60,6 +75,7 @@ public class PlanetSimulator {
     }
   }
   
+  /** Draws all of the planets */
   private void drawPlanets() { 
     StdDraw.show(25);
     StdDraw.picture(0, 0, "starfield.jpg");
@@ -68,6 +84,7 @@ public class PlanetSimulator {
     }
   }
   
+  /** Main method to begin simulation */
   public static void main(String[] ryan) { 
     PlanetSimulator theSim = new PlanetSimulator();
   }
