@@ -23,6 +23,18 @@ public class Point {
     this.yVal = newY;
   }
   
+  public double getDistance(final Point otherPoint) { 
+    final double insideRadical = Math.abs(Math.pow(this.xVal - otherPoint.getX(), 2) + 
+                                          Math.pow(this.yVal - otherPoint.getY(), 2));
+    return Math.sqrt(insideRadical);
+  }
+  
+  public static double getDistance(final Point firstPoint, final Point secondPoint) { 
+    final double insideRadical = Math.abs(Math.pow(firstPoint.getX() - secondPoint.getX(), 2) + 
+                                          Math.pow(firstPoint.getY() - secondPoint.getY(), 2));
+    return Math.sqrt(insideRadical);
+  }
+      
   @Override
   public boolean equals(final Object other) { 
     if(!(other instanceof Point)) { 
