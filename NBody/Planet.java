@@ -5,30 +5,26 @@ public class Planet {
   public static final double T = 157788000.0;
   
   private final String planetName;
-  private final double initialXVelocity, initialYVelocity;
-  private final double initialX, initialY;
+  private final Point initialVelocity;
+  private final Point initialPoint;
   private final double mass;
   
-  private double currentX, currentY;
-  private double velocityX, velocityY;
+  private double currentPoint;
+  private double currentVelocity;
   
   private double F;
   private double r;
   private double sunMass;
   
-  public Planet(final double initialX, final double initialY, final double initialXVelocity, 
-                final double initialYVelocity, final double mass, final String planetName) { 
-    this.planetName = planetName;
-    this.initialX = initialX;
-    this.initialY = initialY;
-    this.initialXVelocity = initialXVelocity;
-    this.initialYVelocity = initialYVelocity;
+  public Planet(final Point initialPoint, final initialVelocity, final double mass, final String planetName) {
+    this.initialVelocity = initialVelocity;
+    this.initialPoint = initialPoint;
     this.mass = mass;
+    this.planetName = planetName;
     
-    this.currentX = initialX;
-    this.currentY = initialY;
-    this.velocityX = initialXVelocity;
-    this.velocityY = initialYVelocity;
+    //Cannot make a reference to initial point as it will affect initialpoint values
+    this.currentPoint = new Point(initialPoint.getX(), initialPoint.getY());
+    this.currentVelocity = new Point(initialVelocity.getX(), initialVelocity.getY());
   }
   
   public void setSunMass(double sunMass) { 
