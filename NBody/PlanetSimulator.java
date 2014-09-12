@@ -23,6 +23,8 @@ public class PlanetSimulator {
     }
     fileIn.close();
     
+    StdDraw.setScale(-1 * universeRadius, universeRadius);
+    
     double sunMass = 0;
     Point sunPoint = null;
     for(Planet planet : planets) { 
@@ -57,17 +59,14 @@ public class PlanetSimulator {
   }
   
   private void drawPlanets() { 
-    //StdDraw.clear();
-    StdDraw.setScale(-1 * universeRadius, universeRadius);
     StdDraw.picture(0, 0, "starfield.jpg");
     for(Planet planet : planets) { 
       drawPlanet(planet);
-      System.out.println(planet.getName() + planet.getPoint().toString());
     }
   }
   
   private void drawPlanet(final Planet thePlanet) { 
-    //StdDraw.picture(thePlanet.getX(), thePlanet.getY(), thePlanet.getName());
+    StdDraw.picture(thePlanet.getPoint().getX(), thePlanet.getPoint().getY(), thePlanet.getName());
   }
   
   public static void main(String[] ryan) { 

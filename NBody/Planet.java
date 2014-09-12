@@ -11,6 +11,7 @@ public class Planet {
   
   private Point currentPoint;
   private Point currentVelocity;
+  private Point sunPoint;
   
   private double F;
   private double r;
@@ -22,9 +23,21 @@ public class Planet {
     this.mass = mass;
     this.planetName = planetName;
     
-    //Cannot make a reference to initial point as it will affect initialpoint values
+    //Cannot make a reference to initial point as it will affect initial point values
     this.currentPoint = new Point(initialPoint.getX(), initialPoint.getY());
     this.currentVelocity = new Point(initialVelocity.getX(), initialVelocity.getY());
+  }
+  
+  public void setSunPoint(final Point sun) { 
+    this.sunPoint = sun;
+  }
+  
+  private double getFx() { 
+    return (F * (Math.abs(this.currentPoint.getX() - sunPoint.getX()))) / (this.currentPoint().getDistance(sunPoint));
+  }
+  
+  public void planetMove() { 
+    
   }
   
   public void setSunMass(double sunMass) { 
@@ -32,7 +45,9 @@ public class Planet {
   }
   
   public void setF(final Point sunPoint) { 
-    this.r = currentPoint.getDistance(sunPoint); //Distance formula from sun center to planet center
+    //Distance formula from sun center to planet center
+    this.r = currentPoint.getDistance(sunPoint); 
+    
     this.F = (G * this.sunMass * this.mass) / Math.pow(r, 2);
   }
   
