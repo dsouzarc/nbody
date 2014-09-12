@@ -1,6 +1,8 @@
 import java.io.File;
 
 public class PlanetSimulator { 
+  public static final double changeT = 25000.0;
+  public static final double T = 157788000.0;
   
   private final int numPlanets;
   private final double universeRadius;
@@ -48,7 +50,7 @@ public class PlanetSimulator {
     
     drawPlanets();
     
-    for(int i = 0; i < 100; i++) {
+    for(double time = changeT; changeT <= T; time += changeT) {
       for(Planet planet : planets) { 
         if(!planet.getName().contains("sun")) { 
           planet.move();
@@ -59,7 +61,7 @@ public class PlanetSimulator {
   }
   
   private void drawPlanets() { 
-    StdDraw.show(40);
+    StdDraw.show(25);
     StdDraw.picture(0, 0, "starfield.jpg");
     for(Planet planet : planets) { 
       StdDraw.picture(planet.getPoint().getX(), planet.getPoint().getY(), planet.getName());
