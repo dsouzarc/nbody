@@ -61,9 +61,12 @@ public class PlanetSimulator {
       }
     }
     
+    //Plays background music
+    StdAudio.play("2001.mid");
+    
     //Draw the planets the first time
     drawPlanets();
-    
+
     //Start at t = 0, increase by changeT until we've reached max time (T)
     for(double time = 0; changeT <= T; time += changeT) {
       for(Planet planet : planets) { 
