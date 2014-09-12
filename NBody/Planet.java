@@ -40,6 +40,13 @@ public class Planet {
     return (F * (Math.abs(this.currentPoint.getY() - sunPoint.getY()))) / Point.getDistance(currentPoint, sunPoint);
   }
   
+  private Point getAcceleration() { 
+    final double xAccel = getFx() / this.mass;
+    final double yAccel = getFy() / this.mass;
+    return new Point(xAccel, yAccel);
+  }
+  
+  
   public void planetMove() { 
     
   }
