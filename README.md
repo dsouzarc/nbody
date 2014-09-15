@@ -1,5 +1,7 @@
 UPDATE: Please refer to
 
+https://github.com/dsouzarc/algorithmsdata/tree/master/NBody
+
 
 Written by Ryan D’souza
 
